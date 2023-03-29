@@ -1,0 +1,73 @@
+{
+  "name": "lifeloo-site",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/lifeloo-site/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/lifeloo-site"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "lifeloo-site:build",
+        "proxyConfig": "apps/lifeloo-site/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "lifeloo-site:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "lifeloo-site:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "lifeloo-site:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "lifeloo-site:build:development"
+        },
+        "production": {
+          "buildTarget": "lifeloo-site:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/lifeloo-site"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/lifeloo-site"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/lifeloo-site/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
