@@ -2,7 +2,11 @@
   "name": "lifeloo",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve",
+    "start:lifeloo": "nx serve lifeloo-site",
+    "nx": "nx"
+  },
   "private": true,
   "devDependencies": {
     "@nrwl/cypress": "15.8.9",
